@@ -1,7 +1,1 @@
-# Tensorflow Boilerplate
-
-Boilerplate repo for starting new Tensorflow projects
-
-## License
-
-MIT
+# MNIST Handwritten Digit Tensorflow Fully-Connected Network Implementation
