@@ -8,7 +8,7 @@ from src.dl.layers import fully_connected
 
 
 class Trainer:
-  batch_size = 4
+  batch_size = 30
   print_every = 10
   save_every = 100
   train_steps = 10000
@@ -80,8 +80,8 @@ class Trainer:
         x, y = self.get_batch()
   
         feed_dict = {
-          self.x: x,
-          self.y: y
+          self.x: x,  # input (image)
+          self.y: y   # label (truth)
         }
         
         self.sess.run(self.minimize_loss, feed_dict)
