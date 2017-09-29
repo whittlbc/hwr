@@ -7,3 +7,4 @@ data/
 tmp/
 *.pem
 bin/
+MNIST-data/

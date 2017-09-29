@@ -38,9 +38,9 @@ class Trainer:
     self.y = tf.placeholder(shape=[None, self.Y_train.shape[1]], dtype=tf.float32)
 
     # Construct network
-    o1 = fully_connected(self.x, output_units=300, activation=tf.nn.relu)
-    o2 = fully_connected(o1, output_units=100, activation=tf.nn.relu)
-    y_hat = fully_connected(o2, output_units=10, activation=tf.nn.softmax)
+    o1 = fully_connected(self.x, output_units=300, activation=tf.nn.relu, scope='fc1')
+    o2 = fully_connected(o1, output_units=100, activation=tf.nn.relu, scope='fc2')
+    y_hat = fully_connected(o2, output_units=10, activation=tf.nn.softmax, scope='fc3')
 
     # Define loss and loss optimizer
     self.loss = tf.reduce_mean(
@@ -117,8 +117,11 @@ class Trainer:
       return json.load(f).get('val') or 0
 
   def set_gstep(self):
+    if not hasattr(self, 'global_step'):
+      self.global_step = 0
+
     with open(global_step_path, 'w+') as f:
-      f.write(json.dumps({'val': self.global_step or 0}, indent=2))
+      f.write(json.dumps({'val': self.global_step}, indent=2))
 
   @staticmethod
   def model_exists():

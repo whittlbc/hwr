@@ -1,6 +1,7 @@
 import tensorflow as tf
 import numpy as np
 
+print 'Loading MNIST dataset...'
 dataset = tf.contrib.learn.datasets.load_dataset('mnist')
 
 
